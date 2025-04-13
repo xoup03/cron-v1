@@ -9,11 +9,9 @@ import path from "path";
 const configPath = path.resolve("config/resetConfig.json");
 const config = JSON.parse(fs.readFileSync(configPath));
 
-const isEndOfMonth = () => {
+const isStartOfMonth = () => {
   const now = new Date();
-  const tomorrow = new Date(now);
-  tomorrow.setDate(now.getDate() + 1);
-  return tomorrow.getDate() === 1;
+  return now.getDate() === 1;
 };
 
 const resetOrderCounters = async () => {
@@ -32,7 +30,7 @@ const resetOrderCounters = async () => {
   for (const entry of config.restaurants) {
     const { name, reset_frequency } = entry;
 
-    if (reset_frequency === "monthly" && !isEndOfMonth()) continue;
+    if (reset_frequency === "monthly" && !isStartOfMonth()) continue;
 
     const restaurant = await Restaurant.findOne({ name });
     if (!restaurant) {

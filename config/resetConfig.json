@@ -1,6 +1,5 @@
 {
   "restaurants": [
-    { "name": "Pizza Palace", "reset_frequency": "daily" },
-    { "name": "Burger House", "reset_frequency": "monthly" }
+    { "name": "Kojjin", "reset_frequency": "daily" }
   ]
 }
